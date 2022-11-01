@@ -14,28 +14,44 @@ import { Logo } from './Logo';
 import useCounter from './hooks/useCounter.hook';
 
 
+
 function App() {
-  const [state, setIncrement, setDecrement, setValue] = useCounter(0);
+  const [state, counterData] = useCounter(0);
+  // const {} = counterData;
   const [val, setVal] = useState('');
+  console.log("set value ",typeof counterData.setValue);
 
-  const handleChange =(e)=> {
-    e.preventDefault();
-    if(e.key === 'Enter') {
-      if(typeof e.target.value !== "number"){
-        console.log('put a number here');
+  const handleKeyUp = (e) => {
+
+   console.log(e.key, "key pressedd here");
+      try {
+
+        console.log(e);
+        const input = e.target.value;
+        setVal(input);
+        if( e.key  === 'Enter'){
+          console.log(val)
+          // alert('enter pressed')
+        const num = parseInt(val);
+        if(!isNaN(num)) {
+          counterData.setValue(num);
+          console.log('num', num);
+          console.log('main value i need from state',state);
+        } else {
+          console.log('NOT A NUMBER');
+        }
       }
-      setValue(e.target.value);
-    }
-
-    setVal(e.target.value);
+     } catch (e) {
+        console.log(e); 
+      }
     
   }
   return (
     // <ChakraProvider theme={theme}>
     <>
-    <div>{state}</div>
-<form action="">
-      <input type="text" value={val} onChange={handleChange}/>
+    <div>{val}</div>
+<form action="" onSubmit={(e)=> e.preventDefault()}>
+      <input onKeyDown={ handleKeyUp} type="text"/>
     </form>
     <button>Increment</button>
     <button>Reset</button>
