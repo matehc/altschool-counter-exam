@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useEffect, useState } from 'react';
 import {
   ChakraProvider,
   Box,
@@ -13,58 +13,52 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Logo } from './Logo';
 import useCounter from './hooks/useCounter.hook';
 
-
-
 function App() {
-  const [state, counterData] = useCounter(0);
-  // const {} = counterData;
-  const [val, setVal] = useState('');
-  console.log("set value ",typeof counterData.setValue);
+  const [state, counterData] = useCounter();
+  const [inputValue, setInputValue] = useState('');
+  const [val, setVal] = useState(0);
 
-  const handleKeyUp = (e) => {
+  useEffect(()=>{
+    counterData.setValue(val);
+    console.log("useEffect",state);
+    
+  }, [val]);
 
-   console.log(e.key, "key pressedd here");
-      try {
-
-        console.log(e);
-        const input = e.target.value;
-        setVal(input);
-        if( e.key  === 'Enter'){
-          console.log(val)
-          // alert('enter pressed')
-        const num = parseInt(val);
-        if(!isNaN(num)) {
-          counterData.setValue(num);
-          console.log('num', num);
-          console.log('main value i need from state',state);
+  const handleKeyUp = e => {
+    try {
+      console.log(e);
+      const input = e.target.value;
+      setInputValue(input);
+      if (e.key === 'Enter') {
+        console.log(inputValue);
+        const num = parseInt(inputValue);
+        if (!isNaN(num)) {
+          setVal(num);
         } else {
           console.log('NOT A NUMBER');
         }
       }
-     } catch (e) {
-        console.log(e); 
-      }
-    
-  }
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     // <ChakraProvider theme={theme}>
     <>
-    <div>{val}</div>
-<form action="" onSubmit={(e)=> e.preventDefault()}>
-      <input onKeyDown={ handleKeyUp} type="text"/>
-    </form>
-    <button>Increment</button>
-    <button>Reset</button>
-    <button>Decrement</button>
+      <div>{state}</div>
+      <form action="" onSubmit={e => e.preventDefault()}>
+        <input onKeyUp={handleKeyUp} type="text" />
+      </form>
+      <button onClick={counterData.setIncrement}>Increment</button>
+      <button onClick={counterData.reset}>Reset</button>
+      <button onClick={counterData.setDecrement}>Decrement</button>
     </>
-    
-      
+
     // </ChakraProvider>
   );
 }
 
 export default App;
-
 
 // <Box textAlign="center" fontSize="xl">
 //         <Grid minH="100vh" p={3}>
