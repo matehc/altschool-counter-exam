@@ -1,5 +1,3 @@
-
-
 function countReducer(state, action) {
   switch(action.type){
     case 'inc': setState((prev) => prev + action.payload);
