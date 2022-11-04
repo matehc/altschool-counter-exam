@@ -1,4 +1,5 @@
-import {React, useReducer, useState} from 'react';
+import {React, useReducer, useState, useEffect} from 'react';
+import Button from '../components/button/Button.component';
 import countReducer from '../reducers/count.reducer';
 import { ACTIONS } from '../constants/constants';
 
@@ -10,22 +11,22 @@ function ReducePage() {
 
 
     useEffect(() => {
-        counterData.setValue(val);
+        // counterData.setValue(val);
         console.log('useEffect', state);
       }, [parsedNumber]);
 
 
-    handleIncrement = (e) => {
+    const handleIncrement = (e) => {
         e.preventDefault();
         dispatch({type:ACTIONS.INCREMENT});
     }
 
-    handleDecrement = (e) => {
+    const handleDecrement = (e) => {
         e.preventDefault();
         dispatch({type:ACTIONS.DECREMENT});
     }
 
-    handleReset = (e) => {
+    const handleReset = (e) => {
         e.preventDefault();
         dispatch({type:ACTIONS.reset});
     }
@@ -33,8 +34,11 @@ function ReducePage() {
     const handleKeyUp = e => {
         try {
           const input = e.target.value;
-          setInputValue(input);
+
+          // create dispatch to store input value 
+          // setInputValue(input);
           if (e.key === 'Enter') {
+            // use input value from new reducer
             const num = parseInt(inputValue);
             if (!isNaN(num)) {
               setParsedNumber(num);

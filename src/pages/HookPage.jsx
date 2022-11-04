@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
+import Button from '../components/button/Button.component';
+import useCounter from '../hooks/useCounter.hook';
 
 function HookPage() {
   const [state, counterData] = useCounter();

@@ -1,4 +1,5 @@
 import { useEffect, useState} from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Button from './components/button/Button.component';
 import {
   ChakraProvider,
@@ -17,49 +18,30 @@ import { Logo } from './Logo';
 
 import useCounter from './hooks/useCounter.hook';
 
+import HomePage from './pages/HomePage';
+import HookPage from './pages/HookPage';
+import ReducePage from './pages/ReducePage';
+import ErrorPage from './pages/ErrorPage';
+
+import ErrorBoundaryPage from './pages/ErrorBoundaryPage';
+import SharedNavLayout from './routes/SharedNavLayout';
+
 
 // import CounterInputBox from './components/counter-box/CounterInputBox';
 
 function App() {
-  // const [state, counterData] = useCounter();
-  // const [inputValue, setInputValue] = useState('');
-  // const [val, setVal] = useState(0);
-
-  // useEffect(() => {
-  //   counterData.setValue(val);
-  //   console.log('useEffect', state);
-  // }, [val]);
-
-  // const handleKeyUp = e => {
-  //   try {
-  //     console.log(e);
-  //     const input = e.target.value;
-  //     setInputValue(input);
-  //     if (e.key === 'Enter') {
-  //       console.log(inputValue);
-  //       const num = parseInt(inputValue);
-  //       if (!isNaN(num)) {
-  //         setVal(num);
-  //       } else {
-  //         console.log('NOT A NUMBER');
-  //       }
-  //     }
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
   return (
     // <ChakraProvider theme={theme}>
     <>
-      <div className='counterDisplay'>{state}</div>
-      <form action="" onSubmit={e => e.preventDefault()}>
-        <input onKeyUp={handleKeyUp} type="text" />
-        <div>
-          <Button handleClick={counterData.setIncrement} child="Increment" />
-          <Button handleClick={counterData.reset} child="Reset" />
-          <Button handleClick={counterData.setDecrement} child="Decrement" />
-        </div>
-      </form>
+     <Routes>
+      <Route path="/" element={<SharedNavLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="hook/counter" element={<HookPage/>}/>
+        <Route path="usereducer/counter" element={<ReducePage/>}/>
+        <Route path="/errorboundary" element={<ErrorBoundaryPage/>}/>
+        <Route path="*" element={<ErrorPage />} />
+      </Route>
+    </Routes>
     </>
 
     // </ChakraProvider>

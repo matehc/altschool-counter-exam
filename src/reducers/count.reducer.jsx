@@ -1,14 +1,14 @@
 function countReducer(state, action) {
   switch(action.type){
-    case 'inc': setState((prev) => prev + action.payload);
+    case 'inc': state = state + 1;
     break;
-    case 'dec': setState((prev) => prev + action.payload);
+    case 'dec': state = state - 1;
     break;
-    case 'reset': setState(0);
+    case 'reset':state = 0;
     break;
-    default: setState(0);
+    default: state = 0;
 
   }
 }
 
-export default countReducer
+export default countReducer;
