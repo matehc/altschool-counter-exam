@@ -7,13 +7,17 @@ import { ACTIONS } from '../constants/constants';
 
 function ReducePage() {
     const [state, dispatch] = useReducer(countReducer, 0);
+
+
     const [parsedNumber, setParsedNumber] = useState(0);
 
 
     useEffect(() => {
         // counterData.setValue(val);
+        dispatch({type: ACTIONS.ADDSTATE, payload: parsedNumber});
+        console.log('effect called');
         console.log('useEffect', state);
-      }, [parsedNumber]);
+     }, [parsedNumber, state]);
 
 
     const handleIncrement = (e) => {
@@ -29,6 +33,7 @@ function ReducePage() {
     const handleReset = (e) => {
         e.preventDefault();
         dispatch({type:ACTIONS.reset});
+        console.log(state)
     }
 
     const handleKeyUp = e => {
@@ -39,7 +44,7 @@ function ReducePage() {
           // setInputValue(input);
           if (e.key === 'Enter') {
             // use input value from new reducer
-            const num = parseInt(inputValue);
+            const num = parseInt(input);
             if (!isNaN(num)) {
               setParsedNumber(num);
             } else {
