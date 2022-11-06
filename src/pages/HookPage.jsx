@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../components/button/Button.component';
 import useCounter from '../hooks/useCounter.hook';
 
@@ -32,17 +32,28 @@ function HookPage() {
   };
   return (
     <section>
-    <div className='counterDisplay'>{state}</div>
-    <form action="" onSubmit={e => e.preventDefault()}>
-      <input onKeyUp={handleKeyUp} type="text" />
-      <div>
-        <Button handleClick={counterData.setIncrement} child="Increment" />
-        <Button handleClick={counterData.reset} child="Reset" />
-        <Button handleClick={counterData.setDecrement} child="Decrement" />
-      </div>
-    </form>
-  </section>
-  )
+      <div className="counterDisplay">{state}</div>
+      <form action="" onSubmit={e => e.preventDefault()}>
+        {/* <input onKeyUp={handleKeyUp} type="text" /> */}
+
+        <div class="floating-label">
+          <input
+            onKeyUp={handleKeyUp}
+            type="text"
+            placeholder="Placeholder"
+            class="floating-label__input"
+          />
+
+          <label class="floating-label__label">Placeholder</label>
+        </div>
+        <div className='button-container'>
+          <Button handleClick={counterData.setIncrement} child="Increment" />
+          <Button handleClick={counterData.reset} child="Reset" />
+          <Button handleClick={counterData.setDecrement} child="Decrement" />
+        </div>
+      </form>
+    </section>
+  );
 }
 
-export default HookPage
+export default HookPage;

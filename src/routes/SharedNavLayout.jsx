@@ -6,16 +6,16 @@ function sharedNavLayout() {
     <div>
        <nav>
        <NavLink to={'/'}>
-          <button>Home</button>
+          Home
         </NavLink>
         <NavLink to={'hook/counter'}>
-          <button>Hook Counter</button>
+          Hook Counter
         </NavLink>
         <NavLink to={'usereducer/counter'}>
-          <button>useReducer Counter</button>
+          useReducer Counter
         </NavLink>
         <NavLink to={'error/errorboundary'}>
-          <button>Error Boundary</button>
+          Error Boundary
         </NavLink>
        </nav>
        <main>

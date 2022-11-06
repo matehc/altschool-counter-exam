@@ -1,71 +1,59 @@
-import {React, useReducer, useState, useEffect} from 'react';
+import { React, useReducer, useState, useEffect } from 'react';
 import Button from '../components/button/Button.component';
 import countReducer from '../reducers/count.reducer';
 import { ACTIONS } from '../constants/constants';
 
-
-
 function ReducePage() {
-    const [state, dispatch] = useReducer(countReducer, {count: 0});
-    console.log('the state', state)
-     
+  const [state, dispatch] = useReducer(countReducer, { count: 0 });
+  console.log('the state', state);
 
-    
+  const [parsedNumber, setParsedNumber] = useState(0);
 
+  useEffect(() => {
+    dispatch({ type: ACTIONS.ADDSTATE, payload: parsedNumber });
+    console.log('effect called');
+    console.log('useEffect', state.count);
+  }, [parsedNumber]);
 
-    const [parsedNumber, setParsedNumber] = useState(0);
+  const handleIncrement = e => {
+    e.preventDefault();
+    dispatch({ type: ACTIONS.INCREMENT });
+  };
 
+  const handleDecrement = e => {
+    e.preventDefault();
+    dispatch({ type: ACTIONS.DECREMENT });
+  };
 
-    useEffect(() => {
-        // counterData.setValue(val);
-        dispatch({type: ACTIONS.ADDSTATE, payload: parsedNumber});
-        console.log('effect called');
-        console.log('useEffect', state.count);
-     }, [parsedNumber]);
+  const handleReset = e => {
+    e.preventDefault();
+    dispatch({ type: ACTIONS.RESET });
+    console.log(state.count);
+  };
 
+  const handleKeyUp = e => {
+    try {
+      const input = e.target.value;
 
-    const handleIncrement = (e) => {
-        e.preventDefault();
-        dispatch({type:ACTIONS.INCREMENT});
-    }
-
-    const handleDecrement = (e) => {
-        e.preventDefault();
-        dispatch({type:ACTIONS.DECREMENT});
-    }
-
-    const handleReset = (e) => {
-        e.preventDefault();
-        dispatch({type:ACTIONS.RESET});
-        console.log(state.count)
-    }
-
-    const handleKeyUp = e => {
-        try {
-          const input = e.target.value;
-
-          // create dispatch to store input value 
-          // setInputValue(input);
-          if (e.key === 'Enter') {
-            // use input value from new reducer
-            const num = parseInt(input);
-            if (!isNaN(num)) {
-              setParsedNumber(num);
-            } else {
-              console.log('NOT A NUMBER');
-            }
-          }
-        } catch (e) {
-          console.log(e);
+      if (e.key === 'Enter') {
+        const num = parseInt(input);
+        if (!isNaN(num)) {
+          setParsedNumber(num);
+        } else {
+          console.log('NOT A NUMBER');
         }
-      };
-    
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <section>
       <div className="counterDisplay">{state.count}</div>
       <form action="" onSubmit={e => e.preventDefault()}>
-        <input onKeyUp={handleKeyUp} type="text" />
-        <div>
+        <input className='number-input' onKeyUp={handleKeyUp} type="text" />
+        <div className='mt-20'>
           <Button handleClick={handleIncrement} child="Increment" />
           <Button handleClick={handleReset} child="Reset" />
           <Button handleClick={handleDecrement} child="Decrement" />
