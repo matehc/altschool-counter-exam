@@ -1,41 +1,54 @@
-import {React, useReducer, useState} from 'react';
+import {React, useReducer, useState, useEffect} from 'react';
+import Button from '../components/button/Button.component';
 import countReducer from '../reducers/count.reducer';
 import { ACTIONS } from '../constants/constants';
 
 
 
 function ReducePage() {
-    const [state, dispatch] = useReducer(countReducer, 0);
+    const [state, dispatch] = useReducer(countReducer, {count: 0});
+    console.log('the state', state)
+     
+
+    
+
+
     const [parsedNumber, setParsedNumber] = useState(0);
 
 
     useEffect(() => {
-        counterData.setValue(val);
-        console.log('useEffect', state);
-      }, [parsedNumber]);
+        // counterData.setValue(val);
+        dispatch({type: ACTIONS.ADDSTATE, payload: parsedNumber});
+        console.log('effect called');
+        console.log('useEffect', state.count);
+     }, [parsedNumber]);
 
 
-    handleIncrement = (e) => {
+    const handleIncrement = (e) => {
         e.preventDefault();
         dispatch({type:ACTIONS.INCREMENT});
     }
 
-    handleDecrement = (e) => {
+    const handleDecrement = (e) => {
         e.preventDefault();
         dispatch({type:ACTIONS.DECREMENT});
     }
 
-    handleReset = (e) => {
+    const handleReset = (e) => {
         e.preventDefault();
-        dispatch({type:ACTIONS.reset});
+        dispatch({type:ACTIONS.RESET});
+        console.log(state.count)
     }
 
     const handleKeyUp = e => {
         try {
           const input = e.target.value;
-          setInputValue(input);
+
+          // create dispatch to store input value 
+          // setInputValue(input);
           if (e.key === 'Enter') {
-            const num = parseInt(inputValue);
+            // use input value from new reducer
+            const num = parseInt(input);
             if (!isNaN(num)) {
               setParsedNumber(num);
             } else {
@@ -48,8 +61,8 @@ function ReducePage() {
       };
     
   return (
-    <div>
-      <div className="counterDisplay">{state}</div>
+    <section>
+      <div className="counterDisplay">{state.count}</div>
       <form action="" onSubmit={e => e.preventDefault()}>
         <input onKeyUp={handleKeyUp} type="text" />
         <div>
@@ -58,7 +71,7 @@ function ReducePage() {
           <Button handleClick={handleDecrement} child="Decrement" />
         </div>
       </form>
-    </div>
+    </section>
   );
 }
 

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
+import Button from '../components/button/Button.component';
+import useCounter from '../hooks/useCounter.hook';
 
 function HookPage() {
   const [state, counterData] = useCounter();
@@ -7,7 +9,7 @@ function HookPage() {
 
   useEffect(() => {
     counterData.setValue(val);
-    console.log('useEffect', state);
+    // console.log('useEffect', state);
   }, [val]);
 
   const handleKeyUp = e => {
@@ -29,7 +31,7 @@ function HookPage() {
     }
   };
   return (
-    <>
+    <section>
     <div className='counterDisplay'>{state}</div>
     <form action="" onSubmit={e => e.preventDefault()}>
       <input onKeyUp={handleKeyUp} type="text" />
@@ -39,7 +41,7 @@ function HookPage() {
         <Button handleClick={counterData.setDecrement} child="Decrement" />
       </div>
     </form>
-  </>
+  </section>
   )
 }
 
