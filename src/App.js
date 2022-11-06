@@ -11,11 +11,8 @@ import {
   Grid,
   theme,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
-
-
-
+// import { ColorModeSwitcher } from './ColorModeSwitcher';
+// import { Logo } from './Logo';
 import useCounter from './hooks/useCounter.hook';
 
 import HomePage from './pages/HomePage';
