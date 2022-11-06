@@ -1,8 +1,9 @@
-import React from 'react'
-
 function ErrorPage() {
+  
   return (
-    <div>ErrorPage</div>
+    <section>
+      ErrorPage
+    </section>
   )
 }
 

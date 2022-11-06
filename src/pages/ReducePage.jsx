@@ -6,7 +6,11 @@ import { ACTIONS } from '../constants/constants';
 
 
 function ReducePage() {
-    const [state, dispatch] = useReducer(countReducer, 0);
+    const [state, dispatch] = useReducer(countReducer, {count: 0});
+    console.log('the state', state)
+     
+
+    
 
 
     const [parsedNumber, setParsedNumber] = useState(0);
@@ -16,8 +20,8 @@ function ReducePage() {
         // counterData.setValue(val);
         dispatch({type: ACTIONS.ADDSTATE, payload: parsedNumber});
         console.log('effect called');
-        console.log('useEffect', state);
-     }, [parsedNumber, state]);
+        console.log('useEffect', state.count);
+     }, [parsedNumber]);
 
 
     const handleIncrement = (e) => {
@@ -32,8 +36,8 @@ function ReducePage() {
 
     const handleReset = (e) => {
         e.preventDefault();
-        dispatch({type:ACTIONS.reset});
-        console.log(state)
+        dispatch({type:ACTIONS.RESET});
+        console.log(state.count)
     }
 
     const handleKeyUp = e => {
@@ -57,8 +61,8 @@ function ReducePage() {
       };
     
   return (
-    <div>
-      <div className="counterDisplay">{state}</div>
+    <section>
+      <div className="counterDisplay">{state.count}</div>
       <form action="" onSubmit={e => e.preventDefault()}>
         <input onKeyUp={handleKeyUp} type="text" />
         <div>
@@ -67,7 +71,7 @@ function ReducePage() {
           <Button handleClick={handleDecrement} child="Decrement" />
         </div>
       </form>
-    </div>
+    </section>
   );
 }
 

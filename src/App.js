@@ -24,6 +24,7 @@ import ReducePage from './pages/ReducePage';
 import ErrorPage from './pages/ErrorPage';
 
 import ErrorBoundaryPage from './pages/ErrorBoundaryPage';
+import ErrorBoundary from './components/error/ErrorBoundary';
 import SharedNavLayout from './routes/SharedNavLayout';
 
 
@@ -38,7 +39,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="hook/counter" element={<HookPage/>}/>
         <Route path="usereducer/counter" element={<ReducePage/>}/>
-        <Route path="/errorboundary" element={<ErrorBoundaryPage/>}/>
+        <Route path="error/errorboundary" element={<ErrorBoundary><ErrorBoundaryPage/></ErrorBoundary>}/>
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>
