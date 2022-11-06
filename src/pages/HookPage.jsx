@@ -46,7 +46,7 @@ function HookPage() {
 
           <label class="floating-label__label">Placeholder</label>
         </div>
-        <div>
+        <div className='button-container'>
           <Button handleClick={counterData.setIncrement} child="Increment" />
           <Button handleClick={counterData.reset} child="Reset" />
           <Button handleClick={counterData.setDecrement} child="Decrement" />

@@ -53,7 +53,7 @@ function ReducePage() {
       <div className="counterDisplay">{state.count}</div>
       <form action="" onSubmit={e => e.preventDefault()}>
         <input className='number-input' onKeyUp={handleKeyUp} type="text" />
-        <div>
+        <div className='mt-20'>
           <Button handleClick={handleIncrement} child="Increment" />
           <Button handleClick={handleReset} child="Reset" />
           <Button handleClick={handleDecrement} child="Decrement" />

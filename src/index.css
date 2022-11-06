@@ -6,6 +6,14 @@
     box-sizing: border-box;
 }
 
+:root {
+    --button-color: #937DC2;
+    --hover-button-color:#C689C6;
+    --body-background-color: #FFE6F7;
+    --nav-bar-color: #C689C6;
+    --white-color: #fff;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -14,15 +22,14 @@ body {
 
 button {
     border: none;
-    background-color: #153462;
-    padding: 5px;
-    border-radius: 5px;
-
-    
+    background-color: var(--button-color);
+    padding: 10px;
+    border-radius: 5px;  
+    color: var(--white-color);  
 }
 
 main {
-    background-color: #F6F6C9;
+    background-color: var(--body-background-color);
     height: calc(100vh - 80px);
     display: flex;
     justify-content: center;
@@ -41,18 +48,27 @@ section {
     margin: 10px;
 }
 
+.button-container{
+    display: flex;
+   justify-content: space-between;
+   background-color: red;
+   
+}
 
 
-
-
-mt-10 {
+.mt-10 {
     margin-top: 10px;
 }
 
-mb-10 {
+.mb-10 {
     margin-bottom: 10px;
 }
 
+
+
+.mt-20 {
+    margin-top: 20px;
+}
 
 
 
@@ -66,4 +82,6 @@ STYLE FOR FORM INPUT
 .number-input {
     width:  80%;
     height: 30px;
+    border: 1px solid #eeee;
+    border-radius: 5px;
 }
