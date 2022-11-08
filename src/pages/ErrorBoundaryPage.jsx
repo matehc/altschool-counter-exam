@@ -10,16 +10,16 @@ function ErrorBoundaryPage() {
     setErrorCount(prev => prev + 1);
   }
 
-  if(errorCount == 5) {
+  if(errorCount === 5) {
     throw new Error('Something is wrong');
   }
   return (
-    <div>
-    <h2>Error Boundary Test</h2>
+    <section className='error-section'>
+    <h2 className='heading-2'>Error Boundary Test</h2>
       <p>Increase the button to increment the number until it equals 5</p>
       <p>{errorCount}</p>
       <Button handleClick ={handleClick} child="+"/>
-    </div>
+    </section>
   )
 }
 

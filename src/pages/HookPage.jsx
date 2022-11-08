@@ -32,21 +32,12 @@ function HookPage() {
   };
   return (
     <section>
-      <div className="counterDisplay">{state}</div>
+    <h2 className='heading-2'>Custom Hook Counter</h2>
+      <p className="counterDisplay">{state}</p>
       <form action="" onSubmit={e => e.preventDefault()}>
-        {/* <input onKeyUp={handleKeyUp} type="text" /> */}
-
-        <div class="floating-label">
-          <input
-            onKeyUp={handleKeyUp}
-            type="text"
-            placeholder="Placeholder"
-            class="floating-label__input"
-          />
-
-          <label class="floating-label__label">Placeholder</label>
-        </div>
-        <div className='button-container'>
+        <input className='number-input' onKeyUp={handleKeyUp} type="text" />
+        
+        <div className='button-container count-bt-container mt-20'>
           <Button handleClick={counterData.setIncrement} child="Increment" />
           <Button handleClick={counterData.reset} child="Reset" />
           <Button handleClick={counterData.setDecrement} child="Decrement" />
