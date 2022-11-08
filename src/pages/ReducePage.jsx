@@ -50,10 +50,11 @@ function ReducePage() {
 
   return (
     <section>
-      <div className="counterDisplay">{state.count}</div>
+    <h2 className='heading-2'>useReducer Counter</h2>
+      <p className="counterDisplay">{state.count}</p>
       <form action="" onSubmit={e => e.preventDefault()}>
         <input className='number-input' onKeyUp={handleKeyUp} type="text" />
-        <div className='mt-20'>
+        <div className='button-container mt-20'>
           <Button handleClick={handleIncrement} child="Increment" />
           <Button handleClick={handleReset} child="Reset" />
           <Button handleClick={handleDecrement} child="Decrement" />
