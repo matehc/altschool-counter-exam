@@ -22,6 +22,7 @@ function HookPage() {
         const num = parseInt(inputValue);
         if (!isNaN(num)) {
           setVal(num);
+
         } else {
           console.log('NOT A NUMBER');
         }

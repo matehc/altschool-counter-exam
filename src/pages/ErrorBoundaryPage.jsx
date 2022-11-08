@@ -16,7 +16,7 @@ function ErrorBoundaryPage() {
   return (
     <section className='error-section'>
     <h2 className='heading-2'>Error Boundary Test</h2>
-      <p>Increase the button to increment the number until it equals 5</p>
+      <p>Click the button to increment the number until it equals 5</p>
       <p>{errorCount}</p>
       <Button handleClick ={handleClick} child="+"/>
     </section>

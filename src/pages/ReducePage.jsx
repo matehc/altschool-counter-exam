@@ -5,14 +5,11 @@ import { ACTIONS } from '../constants/constants';
 
 function ReducePage() {
   const [state, dispatch] = useReducer(countReducer, { count: 0 });
-  console.log('the state', state);
 
   const [parsedNumber, setParsedNumber] = useState(0);
 
   useEffect(() => {
     dispatch({ type: ACTIONS.ADDSTATE, payload: parsedNumber });
-    console.log('effect called');
-    console.log('useEffect', state.count);
   }, [parsedNumber]);
 
   const handleIncrement = e => {
@@ -39,6 +36,7 @@ function ReducePage() {
         const num = parseInt(input);
         if (!isNaN(num)) {
           setParsedNumber(num);
+          input.value = '';
         } else {
           console.log('NOT A NUMBER');
         }
