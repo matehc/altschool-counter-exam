@@ -18,8 +18,8 @@ function HookPage() {
       const input = e.target.value;
       setInputValue(input);
       if (e.key === 'Enter') {
-        console.log(inputValue);
         const num = parseInt(inputValue);
+        e.target.value = '';
         if (!isNaN(num)) {
           setVal(num);
 

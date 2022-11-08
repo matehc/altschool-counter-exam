@@ -34,6 +34,7 @@ function ReducePage() {
 
       if (e.key === 'Enter') {
         const num = parseInt(input);
+        e.target.value = '';
         if (!isNaN(num)) {
           setParsedNumber(num);
           input.value = '';
